@@ -1,0 +1,20 @@
+.list-group-flush {
+    margin-top: 90px;
+}
+
+.list-group-flush>.list-group-item {
+    background: none;
+    color: #fff;
+}
+
+.vs {
+    color: #4E9F3D;
+}
+
+.white {
+    color: #fff;
+}
+
+.left {
+    text-align: left;
+}
