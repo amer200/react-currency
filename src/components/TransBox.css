@@ -1,0 +1,14 @@
+.form {
+    margin-top: 90px;
+    padding: 60px;
+}
+
+.select {
+    width: 75px;
+    position: relative;
+    top: -55px;
+    left: -308px;
+}
+#currency-t{
+    width: 80%;
+}

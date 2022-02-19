@@ -1,0 +1,9 @@
+.ad{
+    border: solid 2px #ffd;
+    color: #fff;
+    height: 100px;
+    text-align: center;
+}
+.ad h4{
+    line-height: 4;
+}
