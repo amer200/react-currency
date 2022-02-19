@@ -5,18 +5,21 @@ import {
   NavbarBrand,
   NavbarToggler,
   Collapse,
-  Nav
+  Nav,
 } from "reactstrap";
+import "./NavBar.css";
 const nav = () => {
   return (
     <div>
-      <Navbar color="dark" dark expand="md" fixed="top" full>
-        <NavbarBrand href="/">logo</NavbarBrand>
+      <Navbar color="light" light expand="md" fixed="top" container>
+        <NavbarBrand href="/">LOGO</NavbarBrand>
         <NavbarToggler onClick={function noRefCheck() {}} />
         <Collapse navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Eur</NavLink>
+              <NavLink className="active" href="/components/">
+                Eur
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

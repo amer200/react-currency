@@ -4,9 +4,16 @@
 
 .list-group-flush>.list-group-item {
     background: none;
+    transition: all 0.5s;
+}
+.list-group-flush>.list-group-item:hover {
+    transform: scale(1.1);
+    background-color: #4E9F3D;
     color: #fff;
 }
-
+.list-group-flush>.list-group-item span{
+    float: right;
+}
 .vs {
     color: #4E9F3D;
 }
