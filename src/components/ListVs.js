@@ -6,7 +6,7 @@ const ListVs = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/currency")
+    fetch("https://curr-api-2.herokuapp.com/currency")
       .then((res) => {
         return res.json();
       })
