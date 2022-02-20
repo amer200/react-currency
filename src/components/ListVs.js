@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ListGroup, ListGroupItem, Button } from "reactstrap";
+import { ListGroup, Button } from "reactstrap";
 import "./ListVs.css";
 const ListVs = () => {
   const [error, setError] = useState(null);
@@ -26,7 +26,6 @@ const ListVs = () => {
   } else if (!isLoaded) {
     return <div>...loading</div>;
   } else {
-    var cur = items[0]?.vs;
     return (
       <ListGroup flush className="col-lg-6" lang="en">
         <h1 className="left">
