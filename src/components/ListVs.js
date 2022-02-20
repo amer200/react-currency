@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ListGroup, Button } from "reactstrap";
+import { ListGroup, Button, ListGroupItem } from "reactstrap";
 import "./ListVs.css";
 const ListVs = () => {
   const [error, setError] = useState(null);
@@ -23,20 +23,22 @@ const ListVs = () => {
   }, []);
   if (error) {
     return <div>{error.message}</div>;
-  } else if (!isLoaded) {
+  } else if (!items[0]) {
     return <div>...loading</div>;
-  } else {
+  } else if (isLoaded) {
+    const myVsKey = () => Object.keys(items[0]?.vs);
     return (
       <ListGroup flush className="col-lg-6" lang="en">
         <h1 className="left">
           {items[0]?.name} <span className="vs">vs</span>
         </h1>
-        {/* { 
-        Object.keys(cur).forEach((a) => {
-          <ListGroupItem className="left">
-            <span>{cur.a}</span> {a}
-          </ListGroupItem>;
-        })} */}
+        {myVsKey().map((k, id) => {
+          return (
+            <ListGroupItem className="left" key={id}>
+              <span>{items[0].vs[k]}</span> {k}
+            </ListGroupItem>
+          );
+        })}
         <Button color="success" outline>
           load more
         </Button>
