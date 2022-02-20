@@ -7,16 +7,14 @@ const ListVs = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/currency")
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then(
         (result) => {
-          console.log(result);
           setIsLoaded(true);
           setItems(result);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           setIsLoaded(true);
           setError(error);
@@ -24,20 +22,22 @@ const ListVs = () => {
       );
   }, []);
   if (error) {
-    return <div>{error}</div>;
+    return <div>{error.message}</div>;
   } else if (!isLoaded) {
     return <div>...loading</div>;
   } else {
+    var cur = items[0]?.vs;
     return (
       <ListGroup flush className="col-lg-6" lang="en">
         <h1 className="left">
-          {items[0].name} <span className="vs">vs</span>
+          {items[0]?.name} <span className="vs">vs</span>
         </h1>
-        {items[0].vs.forEach((v) => {
+        {/* { 
+        Object.keys(cur).forEach((a) => {
           <ListGroupItem className="left">
-            <span>25</span> usd
+            <span>{cur.a}</span> {a}
           </ListGroupItem>;
-        })}
+        })} */}
         <Button color="success" outline>
           load more
         </Button>
