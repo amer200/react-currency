@@ -2,13 +2,18 @@ import { useState, useEffect } from "react";
 import { Form, FormGroup, Col, Input } from "reactstrap";
 import AdArea from "./AdArea";
 import "./TransBox.css";
-const TransBox = () => {
+const TransBox = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-
+  let curr;
+  if (!props.curr) {
+    curr = "EUR";
+  } else {
+    curr = props.curr;
+  }
   useEffect(() => {
-    fetch("https://curr-api-2.herokuapp.com/currency/EUR")
+    fetch(`https://curr-api-2.herokuapp.com/currency/${curr}`)
       .then((res) => {
         return res.json();
       })
@@ -22,7 +27,7 @@ const TransBox = () => {
           setError(error);
         }
       );
-  }, []);
+  }, [curr]);
   if (error) {
     return <div>error : {error.message}</div>;
   } else if (!isLoaded) {
@@ -34,7 +39,7 @@ const TransBox = () => {
       const toVal = document.getElementById("currency-t");
       const toCurr = document.getElementById("s-to");
       const price = items.vs[toCurr.value];
-      return toVal.value = price * fromVal.value;
+      return (toVal.value = price * fromVal.value);
     };
     return (
       <Form className="col-lg-6 form">
@@ -51,7 +56,7 @@ const TransBox = () => {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Col sm={10}>
+          <Col sm={7}>
             <Input
               id="currency-t"
               name="currency-t"
@@ -59,9 +64,7 @@ const TransBox = () => {
               type="number"
             />
           </Col>
-        </FormGroup>
-        <FormGroup className="select">
-          <Col sm={10}>
+          <Col sm={1}>
             <Input id="s-to" name="s-to" type="select">
               {
                 vsKeys.map((item, id) => {

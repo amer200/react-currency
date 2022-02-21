@@ -4,16 +4,10 @@
 }
 
 .select {
-    width: 75px;
-    position: relative;
+    /* position: relative;
     top: -55px;
-    left: -308px;
+    left: -308px; */
 }
-
-#currency-t,
-#curreny-from {
-    width: 80%;
-}
-.form-select{
-    width: 130%;
+.form-select {
+    width: 90px;
 }

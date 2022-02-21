@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import "./ListVs.css";
-const ListVs = () => {
+const ListVs = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-
+  let curr;
+  if (!props.curr) {
+    curr = "EUR";
+  } else {
+    curr = props.curr;
+  }
   useEffect(() => {
-    fetch("https://curr-api-2.herokuapp.com/currency/EUR")
+    fetch(`https://curr-api-2.herokuapp.com/currency/${curr}`)
       .then((res) => {
         return res.json();
       })
@@ -21,7 +26,7 @@ const ListVs = () => {
           setError(error);
         }
       );
-  }, []);
+  }, [curr]);
   if (error) {
     return <div>{error.message}</div>;
   } else if (!isLoaded) {
@@ -42,8 +47,8 @@ const ListVs = () => {
         })}
       </ListGroup>
     );
-  }else {
-    return ( <div>no data</div>)
+  } else {
+    return <div>no data</div>;
   }
 };
 
