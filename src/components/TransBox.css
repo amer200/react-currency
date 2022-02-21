@@ -9,6 +9,11 @@
     top: -55px;
     left: -308px;
 }
-#currency-t{
+
+#currency-t,
+#curreny-from {
     width: 80%;
+}
+.form-select{
+    width: 130%;
 }
